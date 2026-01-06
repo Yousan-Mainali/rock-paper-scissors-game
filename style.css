@@ -21,10 +21,13 @@ img{
     height:100px;
     width: 100px;
     border-radius: 50%;
+    box-sizing: border-box;
 }
 
 img:hover{
     border: 5px solid #211832;
+    transform: scale(1);
+   
 }
 
 .containeer{
