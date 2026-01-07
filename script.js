@@ -3,24 +3,32 @@ let compScore=0;
 
 const choices=document.querySelectorAll(".choice");
 let msg=document.querySelector("#msg");
+let userScoreMsg=document.querySelector("#user-score");
+let compScoreMsg=document.querySelector("#comp-score");
 
 const drawGames=()=>{
-        console.log("The game was drawn");
-           msg.innerText="The game is drawn";
+    compScore++;
+    userScore++;
+
+    userScoreMsg.innerText=(userScore);
+    compScoreMsg.innerHTML=(compScore);
+
+         msg.innerText="The game is drawn";
          msg.style.backgroundColor="Green";
     }
 
 
-const showWinner=(userWin)=>{
+const showWinner=(userWin, userChoice, compChoice)=>{
     if (userWin===true){
-        console.log("You won");
-        msg.innerText="You Won";
+        userScore++;
+        userScoreMsg.innerText=(userScore);
+        msg.innerText=`You Won! Your ${userChoice} beats Computer ${compChoice}`;
         msg.style.backgroundColor="Blue";
     }
     else if(userWin===false){
-
-        console.log("You lose");
-        msg.innerText="You Loose";
+        compScore++;
+        compScoreMsg.innerText=(compScore);
+        msg.innerText=(`You Loose! Computer ${compChoice} beats your ${userChoice}`);
          msg.style.backgroundColor="Red";
     }
 }    
@@ -47,7 +55,7 @@ const playGames=(userChoice)=>{
             userWin=compChoice==="rock"?false:true;
         }
 
-        showWinner(userWin);
+        showWinner(userWin, userChoice, compChoice);
 
 
     }
